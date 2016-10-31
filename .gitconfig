@@ -1,0 +1,32 @@
+[user]
+	name = Ryan Lewis
+	email = ryandlewis.rl@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = auto
+[color "branch"]
+	current = cyan
+	local = yellow
+	remote = red
+[color "diff"]
+	meta = yellow bold
+	frag = cyan
+	old = red
+	new = green
+	whitespace = white reverse
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+	branch = blue
+[alias]
+	cm = commit -m
+	br = branch
+	st = status
+	conf = config --global -e
+	history = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	hist = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	hast = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	summary = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	sum = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
