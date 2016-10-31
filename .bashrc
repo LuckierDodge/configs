@@ -42,7 +42,7 @@ git_clean()
 	if [[ $(git status 2> /dev/null | tail -1) != "nothing to commit, working directory clean" ]]; then
 		echo "$Yellow$(git_branch)"
 	else
-		echo "$Cyan$(git_branch)"
+		echo "$Green$(git_branch)"
 	fi
 }
 
