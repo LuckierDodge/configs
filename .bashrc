@@ -25,7 +25,7 @@ shopt -s checkwinsize
 Red='\[\e[0;31m\]'
 Green='\[\e[0;32m\]'
 Yellow='\[\e[0;33m\]'
-Blue='\[\e[01;36m\]'
+Blue='\[\e[01;34m\]'
 Cyan='\[\e[01;36m\]'
 White='\[\e[01;37m\]'
 Orange='\[\e[01;31m\]'
@@ -48,7 +48,7 @@ git_clean()
 
 set_prompt ()
 {
-	PS1="$Cyan\u$Blue@$Cyan\h$White:$Green\w"
+	PS1="$Cyan\u$White@$Cyan\h$White:$Green\w"
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$White on $(git_clean)"
 	fi
