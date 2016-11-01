@@ -48,7 +48,7 @@ git_clean()
 
 set_prompt ()
 {
-	PS1="$Orange\u$Green@\h$White:$Cyan\w"
+	PS1="$Cyan\u$Blue@$Cyan\h$White:$Green\w"
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$White on $(git_clean)"
 	fi
