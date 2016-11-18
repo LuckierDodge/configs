@@ -3,6 +3,7 @@
 # ssh aliases
 alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
+alias turing='ssh z1764034@turing.cs.niu.edu'
 alias rypi='ssh pi@10.157.1.69'
 alias alarm='ssh alarm@10.157.2.12'
 
