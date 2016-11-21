@@ -1,6 +1,8 @@
 [user]
 	name = Ryan Lewis
 	email = ryandlewis.rl@gmail.com
+[credential]
+	helper = cache
 [core]
 	editor = vim
 [color]

@@ -6,21 +6,16 @@ case $- in
 	*) return;;
 esac
 
-# Don't put duplicate lines or lines starting with space in history file
-HISTCONTROL=ignoreboth
-
-# Append to history file, don't overwrite
+# History options
 shopt -s histappend
-
-# Set history length
+export HISTIGNORE="exit:ls:ll:la:c:clear:cd"
+HISTTIMEFORMAT='%F %T '
+HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Check window size after each command
-shopt -s checkwinsize
-
-# Make less more friendly for non-text input files
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+shopt -s checkwinsize 
 
 Red='\[\e[0;31m\]'
 Green='\[\e[0;32m\]'
