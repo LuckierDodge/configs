@@ -4,10 +4,6 @@ Plug 'whatyouhide/vim-gotham'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
-<<<<<<< HEAD
-"Set up colorscheme
-"set termguicolors
-=======
 "Handle older vim cases
 if has("termguicolor")
 	set termguicolors
@@ -15,7 +11,6 @@ if has("termguicolor")
 endif
 
 "Colorscheme
->>>>>>> a2ff523b270b46332ce92be3611532ce416b7a7a
 syntax enable
 colorscheme gotham
 
