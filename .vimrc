@@ -12,7 +12,7 @@ endif
 
 "Colorscheme
 syntax enable
-colorscheme gotham
+colorscheme gotham256
 
 "Line numbers
 set number
