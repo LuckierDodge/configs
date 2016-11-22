@@ -87,3 +87,7 @@ PATH=".:${PATH}"
 
 # Set TERM to support colors
 TERM='xterm-256color'
+
+if [ -f "$HOME/.dircolors" ]; then
+	eval `dircolors -b "$HOME/.dircolors"`
+fi
