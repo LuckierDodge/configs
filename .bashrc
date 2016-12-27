@@ -91,3 +91,11 @@ TERM='xterm-256color'
 if [ -f "$HOME/.dircolors" ]; then
 	eval `dircolors -b "$HOME/.dircolors"`
 fi
+if [ $(hostname) = "rypi" ]; then
+	sudo setvtrgb rypi_colors
+fi
+
+# Launch tmux if not already launched
+if [ "$TMUX" = "" ]; then
+	mux
+fi
