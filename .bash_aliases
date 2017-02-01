@@ -4,7 +4,9 @@
 alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
 alias turing='ssh z1764034@turing.cs.niu.edu'
-alias rypi='ssh pi@10.157.1.69'
+alias rypi='ssh pi@10.157.1.255'
+#alias rypi='ssh pi@172.16.14.9'
+#alias rypi='ssh pi@10.157.1.35'
 alias alarm='ssh alarm@10.157.2.12'
 
 # ls and grep color support
