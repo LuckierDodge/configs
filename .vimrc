@@ -1,6 +1,5 @@
 " Plugins
 call plug#begin()
-Plug 'whatyouhide/vim-gotham'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
@@ -12,7 +11,7 @@ endif
 
 "Colorscheme
 syntax enable
-colorscheme gotham256
+colorscheme molokai "gotham256
 
 "Line numbers
 set number
