@@ -32,7 +32,7 @@ set splitbelow
 "Lightline changes
 set noshowmode
 set laststatus=2
-let g:lightline = { 'colorscheme': 'gotham' }
+let g:lightline = { 'colorscheme': 'molokai' }
 
 "Performance improvements
 set lazyredraw
