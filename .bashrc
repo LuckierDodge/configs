@@ -127,3 +127,6 @@ fi
 if [ "$TMUX" = "" ]; then
 	mux
 fi
+
+
+echo "Welcome Home!"
