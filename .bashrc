@@ -84,6 +84,7 @@ fi
 alias ll='ls -alhFo'
 alias la='ls -A'
 alias l='ls -CF'
+alias ls='ls --color=auto'
 
 # tmux session alias
 alias mux='tmux new -s Home'
