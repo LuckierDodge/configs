@@ -17,13 +17,14 @@ HISTFILESIZE=2000
 # Check window size after each command
 shopt -s checkwinsize 
 
-Red='\[\e[0;31m\]'
-Green='\[\e[0;32m\]'
-Yellow='\[\e[0;33m\]'
+Red='\[\e[01;31m\]'
+Green='\[\e[01;32m\]'
+Yellow='\[\e[01;33m\]'
 Blue='\[\e[01;34m\]'
 Cyan='\[\e[01;36m\]'
 White='\[\e[01;37m\]'
-Orange='\[\e[01;31m\]'
+Orange='\[\e[00;33m\]'
+Purple='\[\e[00;35m\]'
 Reset='\[\e[00m\]'
 
 # Set prompt
@@ -43,11 +44,11 @@ git_clean()
 
 set_prompt ()
 {
-	PS1="$Cyan\u$White@$Cyan\h$White:$Green\w"
+	PS1="$Cyan($Green\u$Cyan) $Orange\h $Purple[$Green\w$Purple]"
 	if [ -n "$(git_branch)" ]; then
-		PS1+="$White on $(git_clean)"
+		PS1+=" $(git_clean)"
 	fi
-	PS1+="$White\$ $Reset"
+	PS1+=" $White-> $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'

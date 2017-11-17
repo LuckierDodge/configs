@@ -20,7 +20,7 @@ if has('gui')
 	"Whitespace
 	set list
 	set listchars=eol:∴,tab:\∫\ ,trail:·
-	set showbreak=ΩΩΩ
+	set showbreak=-->
 else
 	if has("termguicolor")
 		set termguicolors
