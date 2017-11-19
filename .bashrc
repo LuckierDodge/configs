@@ -96,6 +96,15 @@ alias c='clear'
 #mysql
 alias mysql='mysql -h courses -u z1764034 -p z1764034'
 
+#upgrading
+alias update='sudo apt update -y && sudo apt upgrade -y'
+
+#Developing on Windows
+alias windev='cd /mnt/c/Users/ryand/Dev'
+
+#Jekyll development
+alias jekylldo='bundle exec jekyll serve'
+
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -129,6 +138,3 @@ fi
 if [ "$TMUX" = "" ]; then
 	mux
 fi
-
-
-echo "Welcome Home!"
