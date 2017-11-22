@@ -26,6 +26,7 @@ White='\[\e[01;37m\]'
 Orange='\[\e[00;33m\]'
 Purple='\[\e[00;35m\]'
 Reset='\[\e[00m\]'
+DarkGreen='\[\e[00;32m\]'
 
 # Set prompt
 git_branch()
@@ -44,7 +45,7 @@ git_clean()
 
 set_prompt ()
 {
-	PS1="$Cyan($Green\u$Cyan) $Orange\h $Purple[$Green\w$Purple]"
+	PS1="$Blue($Green\u$Blue) $DarkGreen\h $Purple[$Cyan\w$Purple]"
 	if [ -n "$(git_branch)" ]; then
 		PS1+=" $(git_clean)"
 	fi
