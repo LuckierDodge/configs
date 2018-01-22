@@ -89,7 +89,8 @@ alias l='ls -CF'
 alias ls='ls --color=auto'
 
 # tmux session alias
-alias mux='tmux new -s Home'
+alias newmux='tmux new -s Home'
+alias oldmux='tmux a -t Home'
 
 # typing is hard
 alias c='clear'
@@ -137,5 +138,8 @@ fi
 
 # Launch tmux if not already launched
 if [ "$TMUX" = "" ]; then
-	mux
+	newmux
+fi
+if [ "$TMUX" = "" ]; then
+	oldmux
 fi
