@@ -143,3 +143,6 @@ fi
 if [ "$TMUX" = "" ]; then
 	oldmux
 fi
+
+source /opt/ros/lunar/setup.bash
+source ~/catkin_ws/devel/setup.sh
