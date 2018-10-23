@@ -69,7 +69,7 @@ alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
 alias turing='ssh z1764034@turing.cs.niu.edu'
 alias rypi='ssh pi@10.157.2.85'
-alias flick='ssh LuckierDodge@flick.cs.niu.edu'
+alias flick='ssh luckierdodge@flick.cs.niu.edu'
 #alias rypi='ssh pi@172.16.14.9'
 #alias rypi='ssh pi@10.157.1.35'
 alias alarm='ssh alarm@10.157.2.12'
@@ -147,3 +147,8 @@ fi
 
 source /opt/ros/lunar/setup.bash
 source ~/catkin_ws/devel/setup.sh
+
+# Ruby exports
+
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
