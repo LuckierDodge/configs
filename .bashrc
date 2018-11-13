@@ -146,7 +146,8 @@ if [ "$TMUX" = "" ]; then
 fi
 
 source /opt/ros/lunar/setup.bash
-source ~/catkin_ws/devel/setup.sh
+source ~/catkin_ws/devel/setup.bash
+source ~/catkin_ws/install_isolated/setup.bash
 
 # Ruby exports
 
