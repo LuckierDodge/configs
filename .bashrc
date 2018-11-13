@@ -149,6 +149,8 @@ source /opt/ros/lunar/setup.bash
 source ~/catkin_ws/devel/setup.bash
 source ~/catkin_ws/install_isolated/setup.bash
 
+neofetch
+
 # Ruby exports
 
 export GEM_HOME=$HOME/gems
