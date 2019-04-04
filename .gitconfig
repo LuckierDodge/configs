@@ -1,7 +1,8 @@
 [user]
 	name = Ryan Lewis
 	email = ryandlewis.rl@gmail.com
-[credential]
+[credential "https://github.com"]
+	username = LuckierDodge
 	helper = cache
 [core]
 	editor = vim
