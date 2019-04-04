@@ -68,11 +68,10 @@ esac
 alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
 alias turing='ssh z1764034@turing.cs.niu.edu'
-alias rypi='ssh pi@10.157.2.85'
 alias flick='ssh luckierdodge@flick.cs.niu.edu'
-#alias rypi='ssh pi@172.16.14.9'
-#alias rypi='ssh pi@10.157.1.35'
-alias alarm='ssh alarm@10.157.2.12'
+alias bailey='ssh luckierdodge@bailey.cs.niu.edu'
+alias hopcroft='ssh luckierdodge@hopcroft.cs.niu.edu -p 11122'
+alias hartley='ssh luckierdodge@hartley.cs.niu.edu'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
@@ -93,20 +92,8 @@ alias ls='ls --color=auto'
 alias newmux='tmux new -s Home'
 alias oldmux='tmux a -t Home'
 
-# typing is hard
-alias c='clear'
-
-#mysql
-alias mysql='mysql -h courses -u z1764034 -p z1764034'
-
 #upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
-
-#Developing on Windows
-alias windev='cd /mnt/c/Users/ryand/Dev'
-
-#Jekyll development
-alias jekylldo='bundle exec jekyll serve'
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
