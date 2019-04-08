@@ -72,6 +72,7 @@ alias flick='ssh luckierdodge@flick.cs.niu.edu'
 alias bailey='ssh luckierdodge@bailey.cs.niu.edu'
 alias hopcroft='ssh luckierdodge@hopcroft.cs.niu.edu -p 11122'
 alias hartley='ssh luckierdodge@hartley.cs.niu.edu'
+alias shatterdome='ssh luckierdodge@10.156.210.33'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
@@ -133,7 +134,7 @@ if [ "$TMUX" = "" ]; then
 fi
 
 if [ -d "/opt/ros" ]; then
-	source /opt/ros/lunar/setup.bash
+	source /opt/ros/kinetic/setup.bash
 	source ~/catkin_ws/devel/setup.bash
 	source ~/catkin_ws/install_isolated/setup.bash
 fi
