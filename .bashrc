@@ -136,5 +136,4 @@ fi
 if [ -d "/opt/ros" ]; then
 	source /opt/ros/kinetic/setup.bash
 	source ~/catkin_ws/devel/setup.bash
-	source ~/catkin_ws/install_isolated/setup.bash
 fi
