@@ -1,5 +1,10 @@
 # .bashrc
 
+# Make a .bash_environment file to store machine specific variables
+if [ -f "$HOME/.bash_environment" ]; then
+	source .bash_environment
+fi
+
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
@@ -49,6 +54,11 @@ set_prompt ()
 	if [ -n "$(git_branch)" ]; then
 		PS1+=" $(git_clean)"
 	fi
+	if [[ -z "$CONTAINER_NAME" ]]; then
+	:
+	else
+		PS1+=" $Orange{$CONTAINER_NAME} "
+	fi
 	PS1+=" $White-> $Reset"
 }
 
@@ -96,6 +106,9 @@ alias oldmux='tmux a -t Home'
 #upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
 
+# Docker aliases
+alias dockerkillall='docker rm $(docker ps -aq)'
+
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -125,15 +138,17 @@ if [ $(hostname) = "rypi" ]; then
 	sudo setvtrgb rypi_colors
 fi
 
-# Launch tmux if not already launched
-if [ "$TMUX" = "" ]; then
-	newmux
-fi
-if [ "$TMUX" = "" ]; then
-	oldmux
+if [ "$START_TMUX" = "TRUE" ]; then
+	#  Launch tmux if not already launched
+	if [ "$TMUX" = "" ]; then
+		newmux
+	fi
+	if [ "$TMUX" = "" ]; then
+		oldmux
+	fi
 fi
 
 if [ -d "/opt/ros" ]; then
-	source /opt/ros/kinetic/setup.bash
+	source /opt/ros/*/setup.bash
 	source ~/catkin_ws/devel/setup.bash
 fi
