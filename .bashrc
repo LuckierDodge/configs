@@ -73,42 +73,6 @@ case "$TERM" in
 		;;
 esac
 
-# Alias definitions
-# ssh aliases
-alias tiger='ssh z1764034@tiger.cs.niu.edu'
-alias hopper='ssh z1764034@hopper.cs.niu.edu'
-alias turing='ssh z1764034@turing.cs.niu.edu'
-alias flick='ssh luckierdodge@flick.cs.niu.edu'
-alias bailey='ssh luckierdodge@bailey.cs.niu.edu'
-alias hopcroft='ssh luckierdodge@hopcroft.cs.niu.edu -p 11122'
-alias hartley='ssh luckierdodge@hartley.cs.niu.edu'
-alias shatterdome='ssh luckierdodge@10.156.210.33'
-
-# ls and grep color support
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# more ls aliases
-alias ll='ls -alhFo'
-alias la='ls -A'
-alias l='ls -CF'
-alias ls='ls --color=auto'
-
-# tmux session alias
-alias newmux='tmux new -s Home'
-alias oldmux='tmux a -t Home'
-
-#upgrading
-alias update='sudo apt update -y && sudo apt upgrade -y'
-
-# Docker aliases
-alias dockerkillall='docker rm $(docker ps -aq)'
-
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
