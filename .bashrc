@@ -57,7 +57,7 @@ set_prompt ()
 	if [[ -z "$CONTAINER_NAME" ]]; then
 	:
 	else
-		PS1+=" $Orange{$CONTAINER_NAME} "
+		PS1+=" $Orange{$CONTAINER_NAME}"
 	fi
 	PS1+=" $White-> $Reset"
 }
@@ -148,7 +148,8 @@ if [ "$START_TMUX" = "TRUE" ]; then
 	fi
 fi
 
-if [ -d "/opt/ros" ]; then
-	source /opt/ros/*/setup.bash
-	source ~/catkin_ws/devel/setup.bash
+if [ -d "/opt/ros/melodic/" ]; then
+	source /opt/ros/melodic/setup.bash
+elif [ -d "/opt/ros/kinetic/" ]; then
+	source /opt/ros/kinetic/setup.bash
 fi
