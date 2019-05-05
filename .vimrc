@@ -98,7 +98,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Single character insertion
 nnoremap <Space> i_<Esc>r
-"Quick Escaep
+"Quick Escape
 inoremap ;; <Esc>
 
 "Fingers are already there...

@@ -102,6 +102,8 @@ if [ $(hostname) = "rypi" ]; then
 	sudo setvtrgb rypi_colors
 fi
 
+source $HOME/.aliases
+
 if [ "$START_TMUX" = "TRUE" ]; then
 	#  Launch tmux if not already launched
 	if [ "$TMUX" = "" ]; then
