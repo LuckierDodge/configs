@@ -118,8 +118,10 @@ fi
 
 if [ -d "/opt/ros/melodic/" ]; then
 	source /opt/ros/melodic/setup.bash
+	source ~/catkin_ws/devel/setup.bash
 elif [ -d "/opt/ros/kinetic/" ]; then
 	source /opt/ros/kinetic/setup.bash
+	source ~/catkin_ws/devel/setup.bash
 fi
 
 # >>> conda initialize >>>
