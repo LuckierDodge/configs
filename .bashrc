@@ -41,25 +41,27 @@ git_branch()
 
 git_clean()
 {
-	if [[ $(git status 2> /dev/null | tail -1) != "nothing to commit, working directory clean" ]]; then
-		echo "$Yellow$(git_branch)"
+	if [[ $(git st) == "" ]]; then
+		echo "$Orange.$Green$(git_branch)"
 	else
-		echo "$Green$(git_branch)"
+		echo "$Orange.$Yellow$(git_branch)"
 	fi
 }
 
 set_prompt ()
 {
-	PS1="$Blue($Green\u$Blue) $DarkGreen\h $Purple[$Cyan\w$Purple]"
-	if [ -n "$(git_branch)" ]; then
-		PS1+=" $(git_clean)"
-	fi
+	PS1="$Cyan\u$Orange@$Cyan\h"
 	if [[ -z "$CONTAINER_NAME" ]]; then
-	:
+		:
 	else
-		PS1+=" $Orange{$CONTAINER_NAME}"
+		PS1+="$Orange.$Yellow$CONTAINER_NAME"
 	fi
-	PS1+=" $White-> $Reset"
+	PS1+="$Orange{$Cyan\w"
+	if [ -n "$(git_branch)" ]; then
+		PS1+="$(git_clean)"
+	fi
+	PS1+="$Orange}"
+	PS1+="$Cyan: $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
