@@ -56,7 +56,7 @@ set_prompt ()
 	else
 		PS1+="$Orange.$Yellow$CONTAINER_NAME"
 	fi
-	PS1+="$Orange{$Cyan\w"
+	PS1+="$Orange {$Cyan\w"
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$(git_clean)"
 	fi
