@@ -4,6 +4,9 @@
 [credential "https://github.com"]
 	username = LuckierDodge
 	helper = cache
+[credential "https://xgitlab.cels.anl.gov"]
+	username = rlewis
+	helper = cache
 [core]
 	editor = vim
 [color]
