@@ -34,8 +34,11 @@ alias ls='ls --color=auto'
 alias newmux='tmux new -s Home'
 alias oldmux='tmux a -t Home'
 
-#upgrading
+# Upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
 
 # Docker aliases
 alias dockerkillall='docker rm $(docker ps -aq)'
+
+# Wake-On-LAN aliases
+alias wol_poa='sudo etherwake -i eth0 D8:CB:8A:9F:5F:12'
