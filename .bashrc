@@ -2,7 +2,7 @@
 
 # Make a .bash_environment file to store machine specific variables
 if [ -f "$HOME/.bash_environment" ]; then
-	source .bash_environment
+	source $HOME/.bash_environment
 fi
 
 # If not running interactively, don't do anything
