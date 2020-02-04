@@ -1,4 +1,10 @@
 # Alias definitions
+# terminal ease of use
+cdl() {
+	cd "$1"
+	ls
+}
+
 # ssh aliases
 alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
