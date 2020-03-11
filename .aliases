@@ -2,7 +2,7 @@
 # terminal ease of use
 cdl() {
 	cd "$1"
-	ls
+	ls --color=auto
 }
 
 # ssh aliases

@@ -28,6 +28,7 @@
 	branch = blue
 [alias]
 	cm = commit -m
+	cma = commit -am
 	br = branch
 	st = status -s
 	conf = config --global -e

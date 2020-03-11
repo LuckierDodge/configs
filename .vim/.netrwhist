@@ -1,10 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/LuckierDodge'
 let g:netrw_dirhist_2='/etc/apt'
 let g:netrw_dirhist_3='/home/luckierdodge/repos/LuckierDodge.github.io/.git'
 let g:netrw_dirhist_4='/home/luckierdodge/repos/configs'
 let g:netrw_dirhist_5='/home/luckierdodge/servers/Vanilla Server 1.14/logs'
 let g:netrw_dirhist_6='/home/luckierdodge/repos/AoT_Postgres_Containerized/scripts'
-let g:netrw_dirhist_7='/home/luckierdodge/repos/AoT_Postgres_Containerized/docker'
-let g:netrw_dirhist_8='/home/luckierdodge/repos/AoT_Postgres_Containerized/docker/docker-entrypoint-initdb.d'
+let g:netrw_dirhist_7='/home/turing/z1764034/repos/csci515/1assign'
