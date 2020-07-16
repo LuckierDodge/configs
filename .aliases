@@ -27,6 +27,7 @@ alias cetus='ssh rlewis@cetus.alcf.anl.gov'
 alias droppod='ssh pi@192.168.1.25'
 alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
 alias replicator='ssh pi@192.168.1.30'
+alias installation04='ssh luckierdodge@192.168.1.51'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
