@@ -50,18 +50,17 @@ git_clean()
 
 set_prompt ()
 {
-	PS1="$Cyan\u$Orange@$Cyan\h"
+	PS1="$Cyan\u$Orange@"
 	if [[ -z "$CONTAINER_NAME" ]]; then
-		:
+		PS1+="$Blue\h"
 	else
-		PS1+="$Orange.$Yellow$CONTAINER_NAME"
+		PS1+="$Purple$CONTAINER_NAME$Orange<${Red}DOCKER$Orange:$Blue\h$Orange>"
 	fi
-	PS1+="$Orange {$Cyan\w"
+	PS1+="$Orange($DarkGreen\w"
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$(git_clean)"
 	fi
-	PS1+="$Orange}"
-	PS1+="$Cyan: $Reset"
+	PS1+="$Orange)$Blue: $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
