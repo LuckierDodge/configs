@@ -48,8 +48,9 @@ alias ls='ls --color=auto'
 alias newmux='tmux new -s Home'
 alias oldmux='tmux a -t Home'
 
-# Upgrading
+# Updating and Upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
+alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
 
 # Docker aliases
 alias dockerkillall='docker rm $(docker ps -aq)'
