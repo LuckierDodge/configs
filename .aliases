@@ -24,10 +24,12 @@ alias mira='ssh rlewis@mira.alcf.anl.gov'
 alias theta='ssh rlewis@theta.alcf.anl.gov'
 alias vesta='ssh rlewis@vesta.alcf.anl.gov'
 alias cetus='ssh rlewis@cetus.alcf.anl.gov'
-alias droppod='ssh pi@192.168.1.25'
 alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
+alias droppod='ssh pi@192.168.1.25'
 alias replicator='ssh pi@192.168.1.30'
-alias installation04='ssh luckierdodge@192.168.4.60'
+alias havoc='ssh luckierdodge@havoc.ryandlewis.dev'
+alias bigbox='ssh luckierdodge@bigbox.ryandlewis.dev'
+alias riskrunner='ssh luckierdodge@riskrunner.ryandlewis.dev'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
