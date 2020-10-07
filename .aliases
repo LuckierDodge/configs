@@ -30,6 +30,7 @@ alias replicator='ssh pi@replicator.ryandlewis.dev'
 alias havoc='ssh luckierdodge@havoc.ryandlewis.dev'
 alias bigbox='ssh luckierdodge@bigbox.ryandlewis.dev'
 alias riskrunner='ssh luckierdodge@riskrunner.ryandlewis.dev'
+alias ark='ssh luckierdodge@192.168.0.178'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
