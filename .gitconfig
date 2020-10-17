@@ -2,7 +2,7 @@
 	name = Ryan Lewis
 	email = ryandlewis.rl@gmail.com
 [credential "https://github.com"]
-	username = LuckierDodge
+	username = luckierdodge
 	helper = store
 [credential "https://xgitlab.cels.anl.gov"]
 	username = rlewis
