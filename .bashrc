@@ -22,58 +22,6 @@ HISTFILESIZE=2000
 # Check window size after each command
 shopt -s checkwinsize 
 
-Red='\[\e[01;31m\]'
-Green='\[\e[01;32m\]'
-Yellow='\[\e[01;33m\]'
-Blue='\[\e[01;34m\]'
-Cyan='\[\e[01;36m\]'
-White='\[\e[01;37m\]'
-Orange='\[\e[00;33m\]'
-Purple='\[\e[00;35m\]'
-Reset='\[\e[00m\]'
-DarkGreen='\[\e[00;32m\]'
-
-# Set prompt
-git_branch()
-{
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-}
-
-git_clean()
-{
-	if [[ $(git st) == "" ]]; then
-		echo "$Orange.$Green$(git_branch)"
-	else
-		echo "$Orange.$Yellow$(git_branch)"
-	fi
-}
-
-set_prompt ()
-{
-	PS1="$Cyan\u$Orange@"
-	if [[ -z "$CONTAINER_NAME" ]]; then
-		PS1+="$Blue\h"
-	else
-		PS1+="$Purple$CONTAINER_NAME$Orange<${Red}DOCKER$Orange:$Blue\h$Orange>"
-	fi
-	PS1+="$Orange($DarkGreen\w"
-	if [ -n "$(git_branch)" ]; then
-		PS1+="$(git_clean)"
-	fi
-	PS1+="$Orange)$Blue: $Reset"
-}
-
-PROMPT_COMMAND='set_prompt'
-
-# If this is an xterm set title to user@host:dir
-case "$TERM" in
-	xterm*|rxvt*)
-		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-		;;
-	*)
-		;;
-esac
-
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -137,3 +85,66 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Prompt Colors
+Red='\[\e[01;31m\]'
+Green='\[\e[01;32m\]'
+Yellow='\[\e[01;33m\]'
+Blue='\[\e[01;34m\]'
+Cyan='\[\e[01;36m\]'
+White='\[\e[01;37m\]'
+Orange='\[\e[00;33m\]'
+Purple='\[\e[00;35m\]'
+Reset='\[\e[00m\]'
+DarkGreen='\[\e[00;32m\]'
+
+# Set prompt
+git_branch()
+{
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+git_clean()
+{
+	if [[ $(git st) == "" ]]; then
+		echo "$Orange.$Green$(git_branch)"
+	else
+		echo "$Orange.$Yellow$(git_branch)"
+	fi
+}
+
+conda_env()
+{
+	if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
+		echo ""
+	else
+		echo "${DarkGreen}+$Purple$CONDA_DEFAULT_ENV"
+	fi
+}
+
+set_prompt ()
+{
+	PS1="$Cyan\u$Orange@"
+	if [[ -z "$CONTAINER_NAME" ]]; then
+		PS1+="$Blue\h"
+	else
+		PS1+="$Purple$CONTAINER_NAME$Orange<${Red}DOCKER$Orange:$Blue\h$Orange>"
+	fi
+	PS1+="$Orange($DarkGreen\w"
+	if [ -n "$(git_branch)" ]; then
+		PS1+="$(git_clean)"
+	fi
+	PS1+="$Orange)$(conda_env)$Blue: $Reset"
+}
+
+PROMPT_COMMAND='set_prompt'
+
+# If this is an xterm set title to user@host:dir
+case "$TERM" in
+	xterm*|rxvt*)
+		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+		;;
+	*)
+		;;
+esac
+
