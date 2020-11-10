@@ -6,12 +6,13 @@ cdl() {
 }
 
 # ssh aliases
+# ssh for NIU resources
 alias tiger='ssh z1764034@tiger.cs.niu.edu'
 alias hopper='ssh z1764034@hopper.cs.niu.edu'
 alias turing='ssh z1764034@turing.cs.niu.edu'
 alias flick='ssh luckierdodge@flick.cs.niu.edu'
-alias flickjupyter='ssh -N -f -M -S /tmp/flickjupyter-sock -L 8888:localhost:8888 luckierdodge@flick.cs.niu.edu flickjupyter'
-alias baileyjupyter='ssh -N -f -M -S /tmp/baileyjupyter-sock -L 9999:localhost:9999 luckierdodge@bailey.cs.niu.edu baileyjupyter'
+alias flickjupyter='ssh -N -f -M -S /tmp/flickjupyter-sock -L 8888:localhost:8888 luckierdodge@flick.cs.niu.edu flickjupyter && echo "Success! Connect to localhost:8888.'
+alias baileyjupyter='ssh -N -f -M -S /tmp/baileyjupyter-sock -L 9999:localhost:9999 luckierdodge@bailey.cs.niu.edu baileyjupyter && echo "Success! Connect to localhost:9999'
 alias killflickjupyter='ssh -S /tmp/flickjupyter-sock -O exit flickjupyter'
 alias killbaileyjupyter='ssh -S /tmp/baileyjupyter-sock -O exit baileyjupyter'
 alias bailey='ssh luckierdodge@bailey.cs.niu.edu'
@@ -19,18 +20,26 @@ alias hopcroft='ssh luckierdodge@hopcroft.cs.niu.edu -p 11122'
 alias hartley='ssh luckierdodge@hartley.cs.niu.edu'
 alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
 alias shatterdome='ssh luckierdodge@10.156.210.33'
+alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
+
+# ssh for ALCF resources
 alias cooley='ssh rlewis@cooley.alcf.anl.gov'
 alias mira='ssh rlewis@mira.alcf.anl.gov'
 alias theta='ssh rlewis@theta.alcf.anl.gov'
 alias vesta='ssh rlewis@vesta.alcf.anl.gov'
 alias cetus='ssh rlewis@cetus.alcf.anl.gov'
-alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
-alias droppod='ssh pi@192.168.1.25'
+
+# ssh for local resources
 alias replicator='ssh pi@replicator.ryandlewis.dev'
+alias replicator-ip='ssh pi@192.168.0.127'
 alias havoc='ssh luckierdodge@havoc.ryandlewis.dev'
+alias havoc-ip='ssh luckierdodge@192.168.0.117'
 alias bigbox='ssh luckierdodge@bigbox.ryandlewis.dev'
+alias bigbox-ip='ssh luckierdodge@192.168.0.144'
 alias riskrunner='ssh luckierdodge@riskrunner.ryandlewis.dev'
-alias ark='ssh luckierdodge@192.168.0.178'
+alias riskrunner-ip='ssh luckierdodge@192.168.0.154'
+alias ark='ssh luckierdodge@ark.ryandlewis.dev'
+alias ark-ip='ssh luckierdodge@192.168.0.178'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
@@ -53,6 +62,7 @@ alias oldmux='tmux a -t Home'
 
 # Updating and Upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
+alias update-ding='sudo apt update -y && sudo apt upgrade -y && ding'
 alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
 
 # Docker aliases
@@ -61,3 +71,7 @@ alias dockerisaac='docker run --mount source=isaac-sdk-build-cache,target=/root 
 
 # Wake-On-LAN aliases
 alias wol_poa='sudo etherwake -i eth0 D8:CB:8A:9F:5F:12'
+
+# Fun terminal stuff
+alias ding='paplay /usr/share/sounds/freedesktop/stereo/complete.oga'
+alias say='echo "$1" | espeak -v mb-us1'
