@@ -118,7 +118,7 @@ conda_env()
 	if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
 		echo ""
 	else
-		echo "${DarkGreen}+$Purple$CONDA_DEFAULT_ENV"
+		echo "${DarkGreen}«$Purple$CONDA_DEFAULT_ENV${DarkGreen}»"
 	fi
 }
 
@@ -134,7 +134,7 @@ set_prompt ()
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$(git_clean)"
 	fi
-	PS1+="$Orange)$(conda_env)$Blue: $Reset"
+	PS1+="$Orange)$(conda_env)$Blue♪ $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
