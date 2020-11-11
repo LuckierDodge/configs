@@ -91,12 +91,10 @@ Red='\[\e[01;31m\]'
 Green='\[\e[01;32m\]'
 Yellow='\[\e[01;33m\]'
 Blue='\[\e[01;34m\]'
+Purple='\[\e[01;35m\]'
 Cyan='\[\e[01;36m\]'
 White='\[\e[01;37m\]'
-Orange='\[\e[00;33m\]'
-Purple='\[\e[00;35m\]'
 Reset='\[\e[00m\]'
-DarkGreen='\[\e[00;32m\]'
 
 # Set prompt
 git_branch()
@@ -107,9 +105,9 @@ git_branch()
 git_clean()
 {
 	if [[ $(git st) == "" ]]; then
-		echo "$Orange.$Green$(git_branch)"
+		echo "$White.$Green$(git_branch)"
 	else
-		echo "$Orange.$Yellow$(git_branch)"
+		echo "$White.$Yellow$(git_branch)"
 	fi
 }
 
@@ -118,7 +116,7 @@ conda_env()
 	if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
 		echo ""
 	else
-		echo "${DarkGreen}«$Purple$CONDA_DEFAULT_ENV${DarkGreen}»"
+		echo "${White}«$Purple$CONDA_DEFAULT_ENV${White}»"
 	fi
 }
 
@@ -134,17 +132,17 @@ exit_prompt()
 set_prompt ()
 {
 	exit_code="$?"
-	PS1="$Cyan\u$Orange@"
+	PS1="$Cyan\u$White@"
 	if [[ -z "$CONTAINER_NAME" ]]; then
 		PS1+="$Blue\h"
 	else
-		PS1+="$Purple$CONTAINER_NAME$Orange<${Red}DOCKER$Orange:$Blue\h$Orange>"
+		PS1+="$Purple$CONTAINER_NAME$White<${Red}DOCKER$White:$Blue\h$White>"
 	fi
-	PS1+="$Orange($DarkGreen\w"
+	PS1+="$White($Blue\w"
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$(git_clean)"
 	fi
-	PS1+="$Orange)$(conda_env)$(exit_prompt) $Reset"
+	PS1+="$White)$(conda_env)$(exit_prompt) $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
