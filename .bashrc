@@ -122,8 +122,18 @@ conda_env()
 	fi
 }
 
+exit_prompt()
+{
+	if [[ $exit_code -eq 0 ]]; then
+		echo "$Green♪"
+	else
+		echo "$Red♪"
+	fi
+}
+
 set_prompt ()
 {
+	exit_code="$?"
 	PS1="$Cyan\u$Orange@"
 	if [[ -z "$CONTAINER_NAME" ]]; then
 		PS1+="$Blue\h"
@@ -134,7 +144,7 @@ set_prompt ()
 	if [ -n "$(git_branch)" ]; then
 		PS1+="$(git_clean)"
 	fi
-	PS1+="$Orange)$(conda_env)$Blue♪ $Reset"
+	PS1+="$Orange)$(conda_env)$(exit_prompt) $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
