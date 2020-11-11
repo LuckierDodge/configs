@@ -63,14 +63,6 @@ if [ "$START_TMUX" = "TRUE" ]; then
 	fi
 fi
 
-if [ -d "/opt/ros/melodic/" ]; then
-	source /opt/ros/melodic/setup.bash
-	source ~/catkin_ws/devel/setup.bash
-elif [ -d "/opt/ros/kinetic/" ]; then
-	source /opt/ros/kinetic/setup.bash
-	source ~/catkin_ws/devel/setup.bash
-fi
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/luckierdodge/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -96,21 +88,29 @@ Cyan='\[\e[01;36m\]'
 White='\[\e[01;37m\]'
 Reset='\[\e[00m\]'
 
-# Set prompt
+# Fetches the git branch
 git_branch()
 {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-git_clean()
+# Add prompt info for git branch
+git_prompt()
 {
-	if [[ $(git st) == "" ]]; then
-		echo "$White.$Green$(git_branch)"
+	if [ -n "$(git_branch)" ]; then
+		# If we're in a git branch, 
+		# print branch name with color indicating whether or not it's clean
+		if [[ $(git st) == "" ]]; then
+			echo "$White.$Green$(git_branch)"
+		else
+			echo "$White.$Yellow$(git_branch)"
+		fi
 	else
-		echo "$White.$Yellow$(git_branch)"
+		echo ""
 	fi
 }
 
+# Add prompt info for conda environment
 conda_env()
 {
 	if [[ -z "$CONDA_DEFAULT_ENV" ]]; then
@@ -120,29 +120,31 @@ conda_env()
 	fi
 }
 
+# Print different colored prompt terminator depending on exit code of previous command
 exit_prompt()
 {
-	if [[ $exit_code -eq 0 ]]; then
+	if [[ $? -eq 0 ]]; then
 		echo "$Green♪"
 	else
 		echo "$Red♪"
 	fi
 }
 
+# Add prompt info for docker container
+docker_prompt()
+{
+	if [[ -z "$CONTAINER_NAME" ]]; then
+		echo "$Blue\h"
+	else
+		echo "$Purple$CONTAINER_NAME$White→${Red}\h$White"
+	fi
+}
+
+# Command run to display prompt
 set_prompt ()
 {
-	exit_code="$?"
-	PS1="$Cyan\u$White@"
-	if [[ -z "$CONTAINER_NAME" ]]; then
-		PS1+="$Blue\h"
-	else
-		PS1+="$Purple$CONTAINER_NAME$White<${Red}DOCKER$White:$Blue\h$White>"
-	fi
-	PS1+="$White($Blue\w"
-	if [ -n "$(git_branch)" ]; then
-		PS1+="$(git_clean)"
-	fi
-	PS1+="$White)$(conda_env)$(exit_prompt) $Reset"
+	exit_code="$(exit_prompt)"
+	PS1="$Cyan\u$White@$(docker_prompt)$White($Cyan\w$(git_prompt)$White)$(conda_env)$exit_code $Reset"
 }
 
 PROMPT_COMMAND='set_prompt'
