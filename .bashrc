@@ -53,13 +53,13 @@ fi
 
 source $HOME/.aliases
 
-if [ "$START_TMUX" = "TRUE" ]; then
-	#  Launch tmux if not already launched
-	if [ "$TMUX" = "" ]; then
-		newmux
-	fi
-	if [ "$TMUX" = "" ]; then
-		oldmux
+if [ "$START_TMUX" = "TRUE" ] && [ "$TMUX" = "" ]; then
+	#  Launch tmux if not already launched and create a new session
+	tmux has-session -t Home 2>/dev/null
+	if [ $? != 0 ]; then
+		homemux
+	else
+		homemuxnew
 	fi
 fi
 

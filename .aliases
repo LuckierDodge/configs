@@ -57,8 +57,8 @@ alias l='ls -CF'
 alias ls='ls --color=auto'
 
 # tmux session alias
-alias newmux='tmux new -s Home'
-alias oldmux='tmux a -t Home'
+alias homemux='tmux new -A -s Home'
+alias homemuxnew='tmux new -A -s Home \; new-window'
 
 # Updating and Upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
@@ -75,3 +75,7 @@ alias wol_poa='sudo etherwake -i eth0 D8:CB:8A:9F:5F:12'
 # Fun terminal stuff
 alias ding='paplay /usr/share/sounds/freedesktop/stereo/complete.oga'
 alias say='echo "$1" | espeak -v mb-us1'
+
+# Rover Aliases
+alias roverlaunch='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/launch.sh'
+alias roverattach='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/attach.sh'
