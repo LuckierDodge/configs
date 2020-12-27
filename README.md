@@ -6,7 +6,4 @@ All of this code is open-source, with a good chunk borrowed and modified from my
 
 # Looking for More?
 
-* [Check out my website](https://www.rlewis.io)
-* [:zap: Buy Me a Kilowatt :zap:](https://www.buymeacoffee.com/aVc18KuLq)
-* [@RhinoDaDino on Twitter](https://twitter.com/RhinoDaDino)
-* [@luckierdodge on Instagram](https://www.instagram.com/luckierdodge/)
+[🌐 ryandlewis.dev](https://ryandlewis.dev)
