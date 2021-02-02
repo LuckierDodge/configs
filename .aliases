@@ -68,6 +68,7 @@ alias update-ding='sudo apt update -y && sudo apt upgrade -y && ding'
 alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
 
 # Docker aliases
+alias dc="docker-compose"
 alias dockerkillall='docker rm $(docker ps -aq)'
 alias dockerisaac='docker run --mount source=isaac-sdk-build-cache,target=/root -v `pwd`:/src/workspace -w /src/workspace --runtime=nvidia -it isaacbuild:latest /bin/bash'
 
