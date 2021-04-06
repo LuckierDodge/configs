@@ -6,6 +6,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-emoji'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
+Plug 'mg979/vim-visual-multi'
+Plug 'easymotion/vim-easymotion'
+Plug 'dominikduda/vim_current_word'
 call plug#end()
 
 "GUI Options
@@ -96,8 +102,9 @@ set wildmenu
 set completeopt=menu,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-"Single character insertion
-nnoremap <Space> i_<Esc>r
+"Remap Leader Key
+let mapleader = "," " map leader to comma
+
 "Quick Escape
 inoremap ;; <Esc>
 
