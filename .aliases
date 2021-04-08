@@ -79,6 +79,7 @@ alias wol_poa='sudo etherwake -i eth0 D8:CB:8A:9F:5F:12'
 alias ding='paplay /usr/share/sounds/freedesktop/stereo/complete.oga'
 alias say='echo "$1" | espeak -v mb-us1'
 
-# Rover Aliases
+# Rover and ROS Aliases
 alias roverlaunch='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/launch.sh'
 alias roverattach='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/attach.sh'
+alias rosdepupdate='rosdep update && rosdep install -i --from-path ~/dev_ws/src --rosdistro foxy -y'
