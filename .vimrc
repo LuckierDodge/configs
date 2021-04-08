@@ -12,41 +12,46 @@ Plug 'tpope/vim-fugitive'
 Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'dominikduda/vim_current_word'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
+
+"Lightline
+set noshowmode
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ }
+
+"Colors
+syntax enable
+colorscheme nord
+set background=dark
+
+"Cursor and Whitespace
+set cursorline
+set cursorcolumn
+"Whitespace
+set list
+set listchars=tab:\→\ ,trail:∴
+set showbreak=\ ↩\ 
 
 "GUI Options
 if has('gui')
-	set cursorline
 	set guifont=Consolas:h12:b
 	set guioptions-=T  "remove toolbar
 	set guioptions-=t  "remove tearoff options
 	set guioptions-=L  "remove left-hand scroll bar
 	set lines=40 columns=85
 	set shell=C:\WINDOWS\system32\cmd.exe
-	"Whitespace
-	set list
-	set listchars=eol:∴,tab:\∫\ ,trail:·
-	set showbreak=-->
 else
 	if has("termguicolor")
 		set termguicolors
-		set cursorline
-	else
-		set nocursorline
 	end
 end
-
-"Colors
-syntax enable
-colorscheme molokai
-set background=dark
 
 "Encoding
 set encoding=utf-8
 
-"Lightline
-set noshowmode
-set laststatus=2
 
 "GitGutter
 set updatetime=250
@@ -124,5 +129,4 @@ command! Q q
 autocmd FileType hlasm set expandtab tabstop=3 shiftwidth=3
 
 "EMOJI SUPPORT!!!
-set omnifunc=emoji#complete
-command! Emoji %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+command! EmojiReplace %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
