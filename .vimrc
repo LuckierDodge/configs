@@ -13,6 +13,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'easymotion/vim-easymotion'
 Plug 'dominikduda/vim_current_word'
 Plug 'arcticicestudio/nord-vim'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 "Lightline
