@@ -110,6 +110,8 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Remap Leader Key
 let mapleader = "," " map leader to comma
+"NerdTree Quick Access
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 "Quick Escape
 inoremap ;; <Esc>
