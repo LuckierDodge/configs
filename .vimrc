@@ -131,5 +131,8 @@ command! Q q
 "Filetypes
 autocmd FileType hlasm set expandtab tabstop=3 shiftwidth=3
 
+"Start with NERDTree open
+autocmd VimEnter * NERDTree | wincmd p
+
 "EMOJI SUPPORT!!!
 command! EmojiReplace %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
