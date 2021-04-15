@@ -14,6 +14,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'dominikduda/vim_current_word'
 Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
+Plug 'mbbill/undotree'
 call plug#end()
 
 "Lightline
@@ -30,7 +31,10 @@ set background=dark
 
 "Cursor and Whitespace
 set cursorline
-set cursorcolumn
+:hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+:hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+:nnoremap <Leader>l :set cursorline! <CR>
+:nnoremap <Leader>c :set cursorcolumn! <CR>
 "Whitespace
 set list
 set listchars=tab:\→\ ,trail:∴
@@ -112,6 +116,11 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 let mapleader = "," " map leader to comma
 "NerdTree Quick Access
 nnoremap <leader>n :NERDTreeToggle<CR>
+"undotree Quick Access
+nnoremap <leader>u :UndotreeToggle<CR>
+"undotree configurations
+let g:undotree_WindowLayout = 3
+let g:undotree_ShortIndicators = 1
 
 "Quick Escape
 inoremap ;; <Esc>
@@ -128,11 +137,22 @@ command! WQ wq
 command! W w
 command! Q q
 
-"Filetypes
-autocmd FileType hlasm set expandtab tabstop=3 shiftwidth=3
-
 "Start with NERDTree open
 autocmd VimEnter * NERDTree | wincmd p
 
 "EMOJI SUPPORT!!!
 command! EmojiReplace %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+
+" Persistent Undo
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+endif
