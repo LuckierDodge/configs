@@ -23,6 +23,7 @@ alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
 alias shatterdome='ssh luckierdodge@shatterdome.ryandlewis.dev'
 alias shatterdome-ip='ssh luckierdodge@192.168.0.169'
 alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
+alias quee='ssh luckierdodge@quee.cs.niu.edu'
 
 # ssh for ALCF resources
 alias cooley='ssh rlewis@cooley.alcf.anl.gov'

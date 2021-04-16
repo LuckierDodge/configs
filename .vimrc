@@ -137,9 +137,6 @@ command! WQ wq
 command! W w
 command! Q q
 
-"Start with NERDTree open
-autocmd VimEnter * NERDTree | wincmd p
-
 "EMOJI SUPPORT!!!
 command! EmojiReplace %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 
