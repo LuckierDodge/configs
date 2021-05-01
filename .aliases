@@ -43,6 +43,7 @@ alias riskrunner='ssh luckierdodge@riskrunner.ryandlewis.dev'
 alias riskrunner-ip='ssh luckierdodge@192.168.0.154'
 alias ark='ssh luckierdodge@ark.ryandlewis.dev'
 alias ark-ip='ssh luckierdodge@192.168.0.178'
+alias triskelion='ssh root@192.168.0.186'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
