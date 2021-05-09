@@ -33,8 +33,12 @@ set background=dark
 set cursorline
 :hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
 :hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-:nnoremap <Leader>l :set cursorline! <CR>
-:nnoremap <Leader>c :set cursorcolumn! <CR>
+:noremap <Leader>l :set cursorline! <CR>
+:noremap <Leader>c :set cursorcolumn! <CR>
+:inoremap <Leader>l :set cursorline! <CR>
+:inoremap <Leader>c :set cursorcolumn! <CR>
+:vnoremap <Leader>l :set cursorline! <CR>
+:vnoremap <Leader>c :set cursorcolumn! <CR>
 "Whitespace
 set list
 set listchars=tab:\→\ ,trail:∴
@@ -115,15 +119,21 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "Remap Leader Key
 let mapleader = "," " map leader to comma
 "NerdTree Quick Access
-nnoremap <leader>n :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
+inoremap <leader>n :NERDTreeToggle<CR>
+vnoremap <leader>n :NERDTreeToggle<CR>
 "undotree Quick Access
-nnoremap <leader>u :UndotreeToggle<CR>
+noremap <leader>u :UndotreeToggle<CR>
+inoremap <leader>u :UndotreeToggle<CR>
+vnoremap <leader>u :UndotreeToggle<CR>
 "undotree configurations
 let g:undotree_WindowLayout = 3
 let g:undotree_ShortIndicators = 1
 
 "Quick Escape
 inoremap ;; <Esc>
+vnoremap ;; <Esc>
+onoremap ;; <Esc>
 
 "Fingers are already there...
 nnoremap <C-j> <C-d>
