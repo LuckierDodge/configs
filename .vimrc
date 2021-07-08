@@ -29,21 +29,6 @@ syntax enable
 colorscheme nord
 set background=dark
 
-"Cursor and Whitespace
-set cursorline
-:hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-:hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
-:noremap <Leader>l :set cursorline! <CR>
-:noremap <Leader>c :set cursorcolumn! <CR>
-:inoremap <Leader>l :set cursorline! <CR>
-:inoremap <Leader>c :set cursorcolumn! <CR>
-:vnoremap <Leader>l :set cursorline! <CR>
-:vnoremap <Leader>c :set cursorcolumn! <CR>
-"Whitespace
-set list
-set listchars=tab:\→\ ,trail:∴
-set showbreak=\ ↩\ 
-
 "GUI Options
 if has('gui')
 	set guifont=Consolas:h12:b
@@ -129,6 +114,22 @@ vnoremap <leader>u :UndotreeToggle<CR>
 "undotree configurations
 let g:undotree_WindowLayout = 3
 let g:undotree_ShortIndicators = 1
+
+"Cursor and Whitespace
+set cursorline
+:hi CursorLine cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+:hi CursorColumn cterm=NONE ctermbg=darkgray ctermfg=white guibg=darkgray guifg=white
+:noremap <Leader>l :set cursorline! <CR>
+:noremap <Leader>c :set cursorcolumn! <CR>
+:inoremap <Leader>l :set cursorline! <CR>
+:inoremap <Leader>c :set cursorcolumn! <CR>
+:vnoremap <Leader>l :set cursorline! <CR>
+:vnoremap <Leader>c :set cursorcolumn! <CR>
+"Whitespace
+set list
+set listchars=tab:\→\ ,trail:∴
+set showbreak=\ ↩\ 
+
 
 "Quick Escape
 inoremap ;; <Esc>

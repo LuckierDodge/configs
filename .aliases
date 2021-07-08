@@ -68,6 +68,7 @@ alias homemuxnew='tmux new -A -s Home \; new-window'
 alias update='sudo apt update -y && sudo apt upgrade -y'
 alias update-ding='sudo apt update -y && sudo apt upgrade -y && ding'
 alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
+alias fixtime='sudo ntpdate time.windows.com'
 
 # Docker aliases
 alias dc="docker-compose"
