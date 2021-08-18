@@ -2,7 +2,7 @@
 # terminal ease of use
 cdl() {
 	cd "$1"
-	ls --color=auto
+	ls
 }
 
 # ssh aliases
@@ -58,7 +58,6 @@ fi
 alias ll='ls -alhFo'
 alias la='ls -A'
 alias l='ls -CF'
-alias ls='ls --color=auto'
 
 # tmux session alias
 alias homemux='tmux new -A -s Home'
