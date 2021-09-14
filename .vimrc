@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'junegunn/vim-emoji'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
