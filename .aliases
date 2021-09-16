@@ -7,28 +7,10 @@ cdl() {
 
 # ssh aliases
 # ssh for NIU resources
-alias flick='ssh luckierdodge@flick.cs.niu.edu'
 alias flickjupyter='ssh -N -f -M -S /tmp/flickjupyter-sock -L 8888:localhost:8888 luckierdodge@flick.cs.niu.edu flickjupyter && echo "Success! Connect to http://localhost:8888."'
 alias baileyjupyter='ssh -N -f -M -S /tmp/baileyjupyter-sock -L 9999:localhost:9999 luckierdodge@bailey.cs.niu.edu baileyjupyter && echo "Success! Connect to http://localhost:9999"'
 alias killflickjupyter='ssh -S /tmp/flickjupyter-sock -O exit flickjupyter'
 alias killbaileyjupyter='ssh -S /tmp/baileyjupyter-sock -O exit baileyjupyter'
-alias bailey='ssh luckierdodge@bailey.cs.niu.edu'
-alias hopcroft='ssh luckierdodge@hopcroft.cs.niu.edu -p 11122'
-alias hartley='ssh luckierdodge@hartley.cs.niu.edu'
-alias karlin='ssh luckierdodge@karlin.cs.niu.edu'
-
-# ssh for local resources
-alias replicator='ssh pi@replicator.ryandlewis.dev'
-alias replicator-ip='ssh pi@192.168.0.127'
-alias havoc='ssh luckierdodge@havoc.ryandlewis.dev'
-alias havoc-ip='ssh luckierdodge@192.168.0.117'
-alias bigbox='ssh luckierdodge@bigbox.ryandlewis.dev'
-alias bigbox-ip='ssh luckierdodge@192.168.0.144'
-alias riskrunner='ssh luckierdodge@riskrunner.ryandlewis.dev'
-alias riskrunner-ip='ssh luckierdodge@192.168.0.154'
-alias ark='ssh luckierdodge@ark.ryandlewis.dev'
-alias ark-ip='ssh luckierdodge@192.168.0.178'
-alias triskelion='ssh root@192.168.0.186'
 
 # ls and grep color support
 if [ -x /usr/bin/dircolors ]; then
