@@ -158,3 +158,18 @@ case "$TERM" in
 		;;
 esac
 
+if [ -f "~/.ssh/id_ed25519" ]; then
+	# Check if the ssh-agent is already running
+	if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
+		#echo "$(date +%F@%T) - SSH-AGENT: Agent will be started"
+		# Start the ssh-agent and redirect the environment variables into a file
+		ssh-agent -s -t 7d > ~/.ssh/ssh-agent
+		# Load the environment variables from the file
+		. ~/.ssh/ssh-agent > /dev/null
+		# Add the default key to the ssh-agent
+		ssh-add ~/.ssh/id_ed25519
+	else
+		#echo "$(date +%F@%T) - SSH-AGENT: Agent already running"
+		. ~/.ssh/ssh-agent > /dev/null
+	fi
+fi
