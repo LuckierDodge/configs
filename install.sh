@@ -1,6 +1,6 @@
 #! /bin/bash
 
-set -x
+set -e
 
 dotfile_dir=`dirname "$(readlink -f "0")"`
 echo "Dotfiles path: $dotfile_dir"
