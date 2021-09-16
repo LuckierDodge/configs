@@ -1,12 +1,37 @@
 #! /bin/bash
 
-cd ~
+set -e
 
-mkdir .conf_backup
+dotfile_dir=`dirname "$(readlink -f "0")"`
+echo "Dotfiles path: $dotfile_dir"
 
-for file in .aliases .bashrc .dircolors .gitconfig .profile .tmux.conf .vim/ .vimrc .zshrc; do
-	cp -r $file .conf_backup/$file
-	unlink $file
-	rm -rf $file
-	ln -s repos/configs/$file
+if [ ! -d ~/.conf_backup ]; then
+	echo "Preparing dotfiles backup"
+	mkdir -p ~/.conf_backup
+else
+	echo "Removing old dotfiles backup"
+	rm -rf ~/.conf_backup
+	mkdir -p ~/.conf_backup
+fi
+
+for file in .aliases .bashrc .dircolors .gitconfig .profile .tmux.conf .vim .vimrc .zshrc; do
+	if [ -f ~/"$file" ]; then
+		if [[ -L ~/"$file" ]]; then
+			unlink ~/$file
+		else
+			cp ~/$file ~/.conf_backup/$file
+			rm -f ~/$file
+		fi
+	fi
+	if [ -d ~/"$file" ]; then
+		if [[ -L ~/"$file" ]]; then
+			unlink ~/$file
+		else
+			cp -r ~/$file ~/.conf_backup/$file
+			rm -rf ~/$file
+		fi
+	fi
+	ln -sv $dotfile_dir/$file ~/$file
 done
+
+echo "dotfiles installed successfully"
