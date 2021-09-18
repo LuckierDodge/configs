@@ -5,6 +5,9 @@ cdl() {
 	ls
 }
 
+# dev server aliases
+alias pocketinfinitycode='ssh -N -f -L 8443:localhost:8443 pocketinfinity'
+
 # ssh aliases
 # ssh for NIU resources
 alias flickjupyter='ssh -N -f -M -S /tmp/flickjupyter-sock -L 8888:localhost:8888 luckierdodge@flick.cs.niu.edu flickjupyter && echo "Success! Connect to http://localhost:8888."'
