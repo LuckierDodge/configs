@@ -163,3 +163,6 @@ if has("persistent_undo")
     let &undodir=target_path
     set undofile
 endif
+
+" Syntax stuff
+autocmd Filetype gitcommit setlocal spell textwidth=72 " Git commit messages

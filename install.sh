@@ -14,7 +14,7 @@ else
 	mkdir -p ~/.conf_backup
 fi
 
-for file in .aliases .bashrc .dircolors .gitconfig .profile .tmux.conf .vim .vimrc .zshrc; do
+for file in .aliases .bashrc .dircolors .gitconfig .gitmessage .profile .tmux.conf .vim .vimrc .zshrc; do
 	if [ -f ~/"$file" ]; then
 		if [[ -L ~/"$file" ]]; then
 			unlink ~/$file
