@@ -1,6 +1,6 @@
 [user]
 	name = Ryan Lewis
-	email = ryandlewis.rl@gmail.com
+	email = accounts+github@ryandlewis.dev
 [core]
 	editor = vim
 [color]
@@ -21,14 +21,16 @@
 	untracked = red
 	branch = blue
 [alias]
-	cm = commit -m
-	cma = commit -am
+	cm = commit
+	cmm = commit -m
+	cma = commit -a
+	cmma = commit -m -a
 	br = branch
 	st = status -s
 	conf = config --global -e
+	plog = log --graph --pretty=format:'%h -%d %s %n' --abbrev-commit --date=relative --branches
 	history = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	hist = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	hast = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	summary = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	sum = log --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 [push]
@@ -41,4 +43,4 @@
 [pull]
 	rebase = false
 [commit]
-	template = $HOME/.gitmessage
+	template = ~/.gitmessage
