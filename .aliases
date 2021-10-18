@@ -33,6 +33,9 @@ alias l='ls -CF'
 # tmux session alias
 alias homemux='tmux new -A -s Home'
 alias homemuxnew='tmux new -A -s Home \; new-window'
+mux() {
+	tmux new -A -s "$1"
+}
 
 # Updating and Upgrading
 alias update='sudo apt update -y && sudo apt upgrade -y'
