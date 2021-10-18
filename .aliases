@@ -7,6 +7,7 @@ cdl() {
 
 # dev server aliases
 alias pocketinfinitycode='ssh -N -f -L 8443:localhost:8443 pocketinfinity'
+alias pocketjupyter='ssh -N -f -L 8888:localhost:8888 pocketinfinity'
 
 # ssh aliases
 # ssh for NIU resources
