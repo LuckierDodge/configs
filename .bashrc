@@ -4,6 +4,9 @@
 if [ -f "$HOME/.bash_environment" ]; then
 	source $HOME/.bash_environment
 fi
+# Source our universal aliases
+source $HOME/.aliases
+
 
 # If not running interactively, don't do anything
 case $- in
@@ -47,12 +50,9 @@ TERM='xterm-256color'
 if [ -f "$HOME/.dircolors" ]; then
 	eval `dircolors -b "$HOME/.dircolors"`
 fi
-if [ $(hostname) = "rypi" ]; then
-	sudo setvtrgb rypi_colors
-fi
 
-source $HOME/.aliases
-
+# Automatically launches TMUX on machines where we've set
+# the START_TMUX flag in .bash_environment
 if [ "$START_TMUX" = "TRUE" ] && [ "$TMUX" = "" ]; then
 	#  Launch tmux if not already launched and create a new session
 	tmux has-session -t Home 2>/dev/null
@@ -158,6 +158,7 @@ case "$TERM" in
 		;;
 esac
 
+# Automatically start SSH agent if this is machine has an SSH key setup
 if [ -f "$HOME/.ssh/id_ed25519" ]; then
 	# Check if the ssh-agent is already running
 	if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
