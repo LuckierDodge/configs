@@ -56,3 +56,7 @@ alias say='echo "$1" | espeak -v mb-us1'
 alias roverlaunch='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/launch.sh'
 alias roverattach='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/attach.sh'
 alias rosdepupdate='rosdep update && rosdep install -i --from-path ~/dev_ws/src --rosdistro foxy -y'
+
+
+# Mcity Aliases
+alias devsrc='source source.sh'

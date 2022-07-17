@@ -21,10 +21,10 @@
 	untracked = red
 	branch = blue
 [alias]
-	cm = commit
-	cmm = commit -m
-	cma = commit -a
-	cmma = commit -m -a
+	c = commit
+	cm = commit -m
+	ca = commit -a
+	cma = commit -m -a
 	br = branch
 	st = status -s
 	conf = config --global -e
