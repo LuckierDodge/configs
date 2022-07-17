@@ -4,6 +4,9 @@
 if [ -f "$HOME/.bash_environment" ]; then
 	source $HOME/.bash_environment
 fi
+if [ -f "/.container_environment" ]; then
+	source /.container_environment
+fi
 # Source our universal aliases
 source $HOME/.aliases
 
