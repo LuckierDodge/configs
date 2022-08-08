@@ -60,6 +60,6 @@ alias rosdepupdate='rosdep update && rosdep install -i --from-path ~/dev_ws/src 
 
 # Mcity Aliases
 alias devsrc='source source.sh'
-alias proxylaunch='/home/luckierdodge/repos/Mcity-proxy-container/launch.sh'
-alias proxyattach='/home/luckierdodge/repos/Mcity-proxy-container/attach.sh'
-alias proxybuild='/home/luckierdodge/repos/Mcity-proxy-container/build.sh'
+alias proxylaunch='/home/luckierdodge/repos/Mcity-proxy-container/proxy/launch.sh'
+alias proxyattach='/home/luckierdodge/repos/Mcity-proxy-container/proxy/attach.sh'
+alias proxybuild='/home/luckierdodge/repos/Mcity-proxy-container/proxy/build.sh'
