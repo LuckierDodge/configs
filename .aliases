@@ -63,3 +63,7 @@ alias devsrc='source source.sh'
 alias proxylaunch='/home/luckierdodge/repos/Mcity-proxy-container/proxy/launch.sh'
 alias proxyattach='/home/luckierdodge/repos/Mcity-proxy-container/proxy/attach.sh'
 alias proxybuild='/home/luckierdodge/repos/Mcity-proxy-container/proxy/build.sh'
+alias baselaunch='/home/luckierdodge/repos/Mcity-proxy-container/basestation/launch.sh'
+alias baseattach='/home/luckierdodge/repos/Mcity-proxy-container/basestation/attach.sh'
+alias basebuild='/home/luckierdodge/repos/Mcity-proxy-container/basestation/build.sh'
+

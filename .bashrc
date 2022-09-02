@@ -22,8 +22,8 @@ shopt -s histappend
 export HISTIGNORE="exit:ls:ll:la:c:clear:cd"
 HISTTIMEFORMAT='%F %T '
 HISTCONTROL=ignoreboth
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # Check window size after each command
 shopt -s checkwinsize 
@@ -150,7 +150,7 @@ set_prompt ()
 	PS1="$Cyan\u$White@$(docker_prompt)$White($Cyan\w$(git_prompt)$White)$(conda_env)$exit_code $Reset"
 }
 
-PROMPT_COMMAND='set_prompt'
+PROMPT_COMMAND='history -a ; history -n ; set_prompt'
 
 # If this is an xterm set title to user@host:dir
 case "$TERM" in
