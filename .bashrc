@@ -155,18 +155,22 @@ esac
 
 # Automatically start SSH agent if this is machine has an SSH key setup
 if [ -f "$HOME/.ssh/id_ed25519" ]; then
-	# Check if the ssh-agent is already running
-	if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
-		#echo "$(date +%F@%T) - SSH-AGENT: Agent will be started"
-		# Start the ssh-agent and redirect the environment variables into a file
-		ssh-agent -s -t 86400 > $HOME/.ssh/ssh-agent
-		# Load the environment variables from the file
-		. $HOME/.ssh/ssh-agent > /dev/null
-		# Add the default key to the ssh-agent
-		ssh-add $HOME/.ssh/id_ed25519
-	else
-		#echo "$(date +%F@%T) - SSH-AGENT: Agent already running"
-		. $HOME/.ssh/ssh-agent > /dev/null
+	if [ -x "$(command -v ssh-agent)" ]; then
+		# Check if the ssh-agent is already running
+		if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
+			# Start the ssh-agent and redirect the environment variables into a file
+			mkdir -p $HOME/.ssh
+			touch $HOME/.ssh/ssh-agent
+			ssh-agent -s -t 86400 > $HOME/.ssh/ssh-agent
+			# Load the environment variables from the file
+			. $HOME/.ssh/ssh-agent > /dev/null
+			# Add the default key to the ssh-agent
+			ssh-add $HOME/.ssh/id_ed25519
+		else
+			if [ -f $HOME/.ssh/ssh-gent ]; then
+				. $HOME/.ssh/ssh-agent > /dev/null
+			fi
+		fi
 	fi
 fi
 
@@ -180,7 +184,7 @@ fi
 
 # Machine Specific Settings and Environment Config
 case "$HOSTNAME" in
-	(mcity-proxy-platform-1)
+	mcity-proxy-platform-* | mcity-proxy-basestation-*)
 		if [ -f /usr/share/colcon_cd/function/colcon_cd.sh ]; then
 			source /usr/share/colcon_cd/function/colcon_cd.sh
 			export _colcon_cd_root=/opt/ros/foxy
@@ -200,5 +204,8 @@ case "$HOSTNAME" in
 		export ROS_DOMAIN_ID=60
 		export NTRIP_USERNAME="mtf"
 		export NTRIP_PASSWORD="Mcity"
+		;;
+	*)
+		:
 		;;
 esac
