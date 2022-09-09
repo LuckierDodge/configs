@@ -174,10 +174,11 @@ if [ -f "$HOME/.ssh/id_ed25519" ]; then
 	fi
 fi
 
-# Make a .bash_environment file to store machine specific and temporary variables
+# Make a .bash_environment file to store machine specific, secret, and temporary variables
 if [ -f "$HOME/.bash_environment" ]; then
 	source $HOME/.bash_environment
 fi
+# Make a .container_environment file and place it in the root of a container to load container specific environment
 if [ -f "/.container_environment" ]; then
 	source /.container_environment
 fi
