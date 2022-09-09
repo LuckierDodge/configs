@@ -1,21 +1,13 @@
 # .bashrc
 
-# Make a .bash_environment file to store machine specific variables
-if [ -f "$HOME/.bash_environment" ]; then
-	source $HOME/.bash_environment
-fi
-if [ -f "/.container_environment" ]; then
-	source /.container_environment
-fi
-# Source our universal aliases
-source $HOME/.aliases
-
-
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
 	*) return;;
 esac
+
+# Source our universal aliases
+source $HOME/.aliases
 
 # History options
 shopt -s histappend
@@ -177,3 +169,36 @@ if [ -f "$HOME/.ssh/id_ed25519" ]; then
 		. $HOME/.ssh/ssh-agent > /dev/null
 	fi
 fi
+
+# Make a .bash_environment file to store machine specific and temporary variables
+if [ -f "$HOME/.bash_environment" ]; then
+	source $HOME/.bash_environment
+fi
+if [ -f "/.container_environment" ]; then
+	source /.container_environment
+fi
+
+# Machine Specific Settings and Environment Config
+case "$HOSTNAME" in
+	(mcity-proxy-platform-1)
+		if [ -f /usr/share/colcon_cd/function/colcon_cd.sh ]; then
+			source /usr/share/colcon_cd/function/colcon_cd.sh
+			export _colcon_cd_root=/opt/ros/foxy
+		fi
+		if [ -f /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash ]; then
+			source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+		fi
+		export CMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH:/usr/local/zed"
+		export ZED_DIR="/usr/local/zed/"
+		for file in /opt/ros/foxy/setup.bash ~/local_ws/install/local_setup.bash ~/dev_ws/install/local_setup.bash; do
+			if [ -f "$file" ]; then
+				source $file
+			fi
+		done
+		export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$HOME/dev_ws/src/mcity_proxy/models
+		export PATH=$PATH:/home/luckierdodge/.local/bin
+		export ROS_DOMAIN_ID=60
+		export NTRIP_USERNAME="mtf"
+		export NTRIP_PASSWORD="Mcity"
+		;;
+esac
