@@ -206,6 +206,28 @@ case "$HOSTNAME" in
 		export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 		export CYCLONEDDS_URI=file://$HOME/dev_ws/src/mcity_proxy/config/cyclonedds.xml
 		;;
+	Normandy)
+		export PATH="$PATH:~/.cargo/bin/cargo:~/julia/bin"
+		#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+		export START_TMUX=FALSE
+
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+		if [ ! -n "$CONTAINER_NAME" ]; then
+			if [ -n "`service docker status | grep not`" ]; then
+				sudo /usr/sbin/service docker start
+			fi
+		fi 
+
+		export PATH="$PATH:/home/luckierdodge/.local/bin"
+		export PYTHONPATH="/home/luckierdodge/.local/bin"
+
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+		;;
 	*)
 		:
 		;;
