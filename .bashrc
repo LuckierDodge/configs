@@ -203,6 +203,8 @@ case "$HOSTNAME" in
 		export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$HOME/dev_ws/src/mcity_proxy/models
 		export PATH=$PATH:/home/luckierdodge/.local/bin
 		export ROS_DOMAIN_ID=60
+		export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+		export CYCLONEDDS_URI=file://$HOME/dev_ws/src/mcity_proxy/config/cyclonedds.xml
 		;;
 	*)
 		:
