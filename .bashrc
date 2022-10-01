@@ -18,7 +18,7 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 # Check window size after each command
-shopt -s checkwinsize 
+shopt -s checkwinsize
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -93,7 +93,7 @@ git_branch()
 git_prompt()
 {
 	if [ -n "$(git_branch)" ]; then
-		# If we're in a git branch, 
+		# If we're in a git branch,
 		# print branch name with color indicating whether or not it's clean
 		if [[ $(git st) == "" ]]; then
 			echo "$White.$Green$(git_branch)"
@@ -201,10 +201,12 @@ case "$HOSTNAME" in
 			fi
 		done
 		export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$HOME/dev_ws/src/mcity_proxy/models
-		export PATH=$PATH:/home/luckierdodge/.local/bin
-		export ROS_DOMAIN_ID=60
-		export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-		export CYCLONEDDS_URI=file://$HOME/dev_ws/src/mcity_proxy/config/cyclonedds.xml
+		export PATH=$PATH:/home/luckierdodge/.local/bin:/home/luckierdodge/dev_ws/src/mcity_proxy/scripts
+		#export ROS_DOMAIN_ID=60
+		# export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+		#export CYCLONEDDS_URI=file://$HOME/dev_ws/src/mcity_proxy/config/cyclonedds.xml
+		#export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+		#export ROS_DISCOVERY_SERVER="141.211.144.227:11811"
 		;;
 	Normandy)
 		export PATH="$PATH:~/.cargo/bin/cargo:~/julia/bin"
@@ -219,7 +221,7 @@ case "$HOSTNAME" in
 			if [ -n "`service docker status | grep not`" ]; then
 				sudo /usr/sbin/service docker start
 			fi
-		fi 
+		fi
 
 		export PATH="$PATH:/home/luckierdodge/.local/bin"
 		export PYTHONPATH="/home/luckierdodge/.local/bin"
