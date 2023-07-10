@@ -47,8 +47,8 @@ alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
 alias fixtime='sudo ntpdate time.windows.com'
 
 # Docker aliases
-alias dc="docker-compose"
-alias dcupdate="docker-compose pull && docker-compose down && docker-compose up -d"
+alias dc="docker compose"
+alias dcupdate="docker compose pull && docker compose down && docker compose up -d"
 alias dockerkillall='docker rm $(docker ps -aq)'
 
 # Fun terminal stuff
