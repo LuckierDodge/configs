@@ -113,3 +113,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+if [ -e /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh ]; then . /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
