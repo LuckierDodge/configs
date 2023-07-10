@@ -15,3 +15,5 @@ if [ -n "$BASH_VERSION" ]; then
     . "$HOME/.bashrc"
     fi
 fi
+
+if [ -e /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh ]; then . /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

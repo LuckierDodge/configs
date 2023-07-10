@@ -10,6 +10,9 @@ src() {
 	source "$1"
 	set +a
 }
+hist() {
+	history | grep "$@"
+}
 
 # dev server aliases
 alias pocketinfinitycode='ssh -N -f -L 8443:localhost:8443 pocketinfinity'
@@ -62,6 +65,7 @@ alias say='echo "$1" | espeak -v mb-us1'
 alias roverlaunch='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/launch.sh'
 alias roverattach='/home/luckierdodge/repos/Dockerfiles/ros2_foxy/attach.sh'
 alias rosdepupdate='rosdep update && rosdep install -i --from-path ~/dev_ws/src --rosdistro foxy -y'
+alias rosdepinstall='rosdep install --from-paths src --ignore-src -r -y'
 
 
 # Mcity Aliases

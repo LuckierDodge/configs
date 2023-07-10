@@ -1,21 +1,13 @@
 # .bashrc
 
-# Make a .bash_environment file to store machine specific variables
-if [ -f "$HOME/.bash_environment" ]; then
-	source $HOME/.bash_environment
-fi
-if [ -f "/.container_environment" ]; then
-	source /.container_environment
-fi
-# Source our universal aliases
-source $HOME/.aliases
-
-
 # If not running interactively, don't do anything
 case $- in
 	*i*) ;;
 	*) return;;
 esac
+
+# Source our universal aliases
+source $HOME/.aliases
 
 # History options
 shopt -s histappend
@@ -26,7 +18,7 @@ HISTSIZE=10000
 HISTFILESIZE=20000
 
 # Check window size after each command
-shopt -s checkwinsize 
+shopt -s checkwinsize
 
 # Enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -101,7 +93,7 @@ git_branch()
 git_prompt()
 {
 	if [ -n "$(git_branch)" ]; then
-		# If we're in a git branch, 
+		# If we're in a git branch,
 		# print branch name with color indicating whether or not it's clean
 		if [[ $(git st) == "" ]]; then
 			echo "$White.$Green$(git_branch)"
@@ -163,17 +155,60 @@ esac
 
 # Automatically start SSH agent if this is machine has an SSH key setup
 if [ -f "$HOME/.ssh/id_ed25519" ]; then
-	# Check if the ssh-agent is already running
-	if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
-		#echo "$(date +%F@%T) - SSH-AGENT: Agent will be started"
-		# Start the ssh-agent and redirect the environment variables into a file
-		ssh-agent -s -t 86400 > $HOME/.ssh/ssh-agent
-		# Load the environment variables from the file
-		. $HOME/.ssh/ssh-agent > /dev/null
-		# Add the default key to the ssh-agent
-		ssh-add $HOME/.ssh/id_ed25519
-	else
-		#echo "$(date +%F@%T) - SSH-AGENT: Agent already running"
-		. $HOME/.ssh/ssh-agent > /dev/null
+	if [ -x "$(command -v ssh-agent)" ]; then
+		# Check if the ssh-agent is already running
+		if [[ "$(ps -u $USER | grep ssh-agent | wc -l)" -lt "1" ]]; then
+			# Start the ssh-agent and redirect the environment variables into a file
+			mkdir -p $HOME/.ssh
+			touch $HOME/.ssh/ssh-agent
+			ssh-agent -s -t 86400 > $HOME/.ssh/ssh-agent
+			# Load the environment variables from the file
+			. $HOME/.ssh/ssh-agent > /dev/null
+			# Add the default key to the ssh-agent
+			ssh-add $HOME/.ssh/id_ed25519
+		else
+			if [ -f $HOME/.ssh/ssh-gent ]; then
+				. $HOME/.ssh/ssh-agent > /dev/null
+			fi
+		fi
 	fi
 fi
+
+for file in \
+	$HOME/.bash_environment \
+	/.container_environment \
+	$HOME/.nix-profile/etc/profile.d/nix.sh \
+	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+do
+	[[ -f "$file" ]] && source $file
+done
+
+# Machine Specific Settings and Environment Config
+case "$HOSTNAME" in
+	Normandy)
+		export PATH="$PATH:~/.cargo/bin/cargo:~/julia/bin"
+		#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+		export START_TMUX=FALSE
+
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+		if [ ! -n "$CONTAINER_NAME" ]; then
+			if [ -n "`service docker status | grep not`" ]; then
+				sudo /usr/sbin/service docker start
+			fi
+		fi
+
+		export PATH="$PATH:/home/luckierdodge/.local/bin"
+		export PYTHONPATH="/home/luckierdodge/.local/bin"
+
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+		;;
+	*)
+		:
+		;;
+esac
+
