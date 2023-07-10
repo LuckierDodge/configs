@@ -174,40 +174,17 @@ if [ -f "$HOME/.ssh/id_ed25519" ]; then
 	fi
 fi
 
-# Make a .bash_environment file to store machine specific, secret, and temporary variables
-if [ -f "$HOME/.bash_environment" ]; then
-	source $HOME/.bash_environment
-fi
-# Make a .container_environment file and place it in the root of a container to load container specific environment
-if [ -f "/.container_environment" ]; then
-	source /.container_environment
-fi
+for file in \
+	$HOME/.bash_environment \
+	/.container_environment \
+	$HOME/.nix-profile/etc/profile.d/nix.sh \
+	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+do
+	[[ -f "$file" ]] && source $file
+done
 
 # Machine Specific Settings and Environment Config
 case "$HOSTNAME" in
-	mcity-proxy-platform-* | mcity-proxy-basestation-*)
-		if [ -f /usr/share/colcon_cd/function/colcon_cd.sh ]; then
-			source /usr/share/colcon_cd/function/colcon_cd.sh
-			export _colcon_cd_root=/opt/ros/foxy
-		fi
-		if [ -f /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash ]; then
-			source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
-		fi
-		export CMAKE_PREFIX_PATH="$CMAKE_PREFIX_PATH:/usr/local/zed"
-		export ZED_DIR="/usr/local/zed/"
-		for file in /opt/ros/foxy/setup.bash ~/local_ws/install/local_setup.bash ~/dev_ws/install/local_setup.bash; do
-			if [ -f "$file" ]; then
-				source $file
-			fi
-		done
-		export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$HOME/dev_ws/src/mcity_proxy/models
-		export PATH=$PATH:/home/luckierdodge/.local/bin:/home/luckierdodge/dev_ws/src/mcity_proxy/scripts
-		#export ROS_DOMAIN_ID=60
-		# export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-		#export CYCLONEDDS_URI=file://$HOME/dev_ws/src/mcity_proxy/config/cyclonedds.xml
-		#export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-		#export ROS_DISCOVERY_SERVER="141.211.144.227:11811"
-		;;
 	Normandy)
 		export PATH="$PATH:~/.cargo/bin/cargo:~/julia/bin"
 		#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
@@ -234,3 +211,4 @@ case "$HOSTNAME" in
 		:
 		;;
 esac
+
