@@ -14,6 +14,7 @@ Plug 'dominikduda/vim_current_word'
 Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 "Lightline
