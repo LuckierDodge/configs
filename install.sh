@@ -2,7 +2,7 @@
 
 set -e
 
-dotfile_dir=`dirname "$(readlink -f "$0")"`
+dotfile_dir=~/repos/configs
 echo "Dotfiles path: $dotfile_dir"
 
 if [ ! -d ~/.conf_backup ]; then
