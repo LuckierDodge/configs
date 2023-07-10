@@ -1,8 +1,14 @@
 # Alias definitions
 # terminal ease of use
+alias rst="source ~/.bashrc"
 cdl() {
 	cd "$1"
 	ls
+}
+src() {
+	set -a
+	source "$1"
+	set +a
 }
 hist() {
 	history | grep "$@"
@@ -63,12 +69,13 @@ alias rosdepinstall='rosdep install --from-paths src --ignore-src -r -y'
 
 
 # Mcity Aliases
-alias devsrc='source source.sh'
-alias proxylaunch='/home/luckierdodge/repos/Mcity-proxy-container/proxy/launch.sh'
-alias proxyattach='/home/luckierdodge/repos/Mcity-proxy-container/proxy/attach.sh'
-alias proxybuild='/home/luckierdodge/repos/Mcity-proxy-container/proxy/build.sh'
-alias baselaunch='/home/luckierdodge/repos/Mcity-proxy-container/basestation/launch.sh'
-alias baseattach='/home/luckierdodge/repos/Mcity-proxy-container/basestation/attach.sh'
-alias basebuild='/home/luckierdodge/repos/Mcity-proxy-container/basestation/build.sh'
-alias jetsoncode='code --no-sandbox'
+alias schedulingbuild="cd ~/repos/Mcity-scheduling && src .env && docker compose build"
+alias scheduling="docker run --env-file .env --rm -p 8080:8080 -p 5000:5000 -it --name scheduling 213372630447.dkr.ecr.us-east-2.amazonaws.com/mcity-scheduling:${UNIQUE_IMAGE_TAG} /bin/bash"
+alias schedulingapi="docker exec -it scheduling /bin/bash -c '. .env && gunicorn --workers 4 -b :5000 -t 120 \"run:create_app()\"'"
+alias schedulingworker="docker exec -it scheduling /bin/bash -c '. .env && flask rq worker scheduling'"
+alias schedulingweb="docker exec -it scheduling /bin/bash -c '. .env && npm run serve'"
+alias schedulingrefresh="docker exec -it scheduling /bin/bash -c '. .env && flask refresh_cache'"
+alias schedulingwatch="docker exec -it scheduling /bin/bash -c '. .env && flask watch_track'"
+alias schedulingexec="docker exec -it scheduling /bin/bash"
+alias schedulingscheduler="docker exec -it scheduling /bin/bash -c '. .env && flask rq scheduler -q scheduling -i 10'"
 
