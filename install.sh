@@ -14,6 +14,8 @@ else
 	mkdir -p ~/.conf_backup
 fi
 
+mkdir -p ~/.config/home-manager
+
 for file in .aliases .bashrc .dircolors .gitconfig .gitmessage .profile .tmux .tmux.conf .vim .vimrc .zshrc .config/home-manager/home.nix; do
 	if [ -f ~/"$file" ]; then
 		if [[ -L ~/"$file" ]]; then
