@@ -69,13 +69,7 @@ alias rosdepinstall='rosdep install --from-paths src --ignore-src -r -y'
 
 
 # Mcity Aliases
-alias schedulingbuild="cd ~/repos/Mcity-scheduling && src .env && docker compose build"
-alias scheduling="docker run --env-file .env --rm -p 8080:8080 -p 5000:5000 -it --name scheduling 213372630447.dkr.ecr.us-east-2.amazonaws.com/mcity-scheduling:${UNIQUE_IMAGE_TAG} /bin/bash"
-alias schedulingapi="docker exec -it scheduling /bin/bash -c '. .env && gunicorn --workers 4 -b :5000 -t 120 \"run:create_app()\"'"
-alias schedulingworker="docker exec -it scheduling /bin/bash -c '. .env && flask rq worker scheduling'"
-alias schedulingweb="docker exec -it scheduling /bin/bash -c '. .env && npm run serve'"
-alias schedulingrefresh="docker exec -it scheduling /bin/bash -c '. .env && flask refresh_cache'"
-alias schedulingwatch="docker exec -it scheduling /bin/bash -c '. .env && flask watch_track'"
-alias schedulingexec="docker exec -it scheduling /bin/bash"
-alias schedulingscheduler="docker exec -it scheduling /bin/bash -c '. .env && flask rq scheduler -q scheduling -i 10'"
+alias scheduling-build="src .env && docker compose -f docker-compose-dev.yml build"
+alias scheduling="docker compose -f docker-compose-dev.yml up"
+alias scheduling-web="docker exec -it scheduling_host /bin/bash -c 'source .env && npm run serve'"
 
