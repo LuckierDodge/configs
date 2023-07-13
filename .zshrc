@@ -62,11 +62,15 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git python vscode colored-man-pages command-not-found docker-compose docker pip ssh-agent sudo tmux starship)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 source $HOME/.zsh_environment
+
+export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_DEFAULT_SESSION_NAME="Home"
+export STARSHIP_CONFIG=~/repos/config/starship.toml
 
 # User configuration
 

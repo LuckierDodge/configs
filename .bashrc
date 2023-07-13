@@ -46,17 +46,6 @@ if [ -f "$HOME/.dircolors" ]; then
 	eval `dircolors -b "$HOME/.dircolors"`
 fi
 
-# Automatically launches TMUX on machines where we've set
-# the START_TMUX flag in .bash_environment
-if [ "$START_TMUX" = "TRUE" ] && [ "$TMUX" = "" ]; then
-	#  Launch tmux if not already launched and create a new session
-	tmux has-session -t Home 2>/dev/null
-	if [ $? != 0 ]; then
-		homemux
-	else
-		homemuxnew
-	fi
-fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -142,6 +131,7 @@ set_prompt ()
 	PS1="$Cyan\u$White@$(docker_prompt)$White($Cyan\w$(git_prompt)$White)$(conda_env)$exit_code $Reset"
 }
 
+export PROMPT_DIRTRIM=2
 PROMPT_COMMAND='history -a ; history -n ; set_prompt'
 
 # If this is an xterm set title to user@host:dir
@@ -211,4 +201,16 @@ case "$HOSTNAME" in
 		:
 		;;
 esac
+
+# Automatically launches TMUX on machines where we've set
+# the START_TMUX flag in .bash_environment
+if [ "$START_TMUX" = "TRUE" ] && [ "$TMUX" = "" ]; then
+	#  Launch tmux if not already launched and create a new session
+	tmux has-session -t Home 2>/dev/null
+	if [ $? != 0 ]; then
+		homemux
+	else
+		homemuxnew
+	fi
+fi
 
