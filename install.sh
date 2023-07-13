@@ -14,7 +14,7 @@ else
 	mkdir -p ~/.conf_backup
 fi
 
-[[ ! -ez $HOME/oh-my-zsh ]] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+[ ! -d $HOME/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 mkdir -p ~/.config/home-manager
 
