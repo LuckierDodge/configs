@@ -57,6 +57,18 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+SOURCE_FILES=(
+	$ZSH/oh-my-zsh.sh
+	$HOME/.zsh_environment
+	/.container_environment
+	$HOME/.nix-profile/etc/profile.d/nix.sh
+	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+)
+
+for (( i = 1; i <= $#SOURCE_FILES; i++ )) do
+	[[ -f $SOURCE_FILES[i] ]] && source $SOURCE_FILES[i]
+done
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -81,19 +93,6 @@ plugins=(
 	starship
 	fzf
 )
-
-
-SOURCE_FILES=(
-	$ZSH/oh-my-zsh.sh
-	$HOME/.zsh_environment
-	/.container_environment
-	$HOME/.nix-profile/etc/profile.d/nix.sh
-	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-)
-
-for (( i = 1; i <= $#SOURCE_FILES; i++ )) do
-	[[ -f $SOURCE_FILES[i] ]] && source $SOURCE_FILES[i]
-done
 
 # User configuration
 
