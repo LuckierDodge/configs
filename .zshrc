@@ -66,12 +66,34 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
 export ZSH_TMUX_DEFAULT_SESSION_NAME="Home"
 export STARSHIP_CONFIG=~/repos/config/starship.toml
-plugins=(git python vscode colored-man-pages command-not-found docker-compose docker pip ssh-agent sudo tmux starship fzf)
+plugins=(
+	git
+	python
+	vscode
+	colored-man-pages
+	command-not-found
+	docker-compose
+	docker
+	pip
+	ssh-agent
+	sudo
+	tmux
+	starship
+	fzf
+)
 
 
-source $ZSH/oh-my-zsh.sh
-[[ -a $HOME/.aliases ]] && source $HOME/.aliases
-[[ -a $HOME/.zsh_environment ]] && source $HOME/.zsh_environment
+SOURCE_FILES=(
+	$ZSH/oh-my-zsh.sh
+	$HOME/.zsh_environment
+	/.container_environment
+	$HOME/.nix-profile/etc/profile.d/nix.sh
+	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+)
+
+for (( i = 1; i <= $#SOURCE_FILES; i++ )) do
+	[[ -f $SOURCE_FILES[i] ]] && source $SOURCE_FILES[i]
+done
 
 # User configuration
 
@@ -99,6 +121,25 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# History options
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+export HISTIGNORE="exit:ls:ll:la:c:clear:cd"
+export HISTTIMEFORMAT='[%F %T] '
+export HISTCONTROL=ignoreboth
+export HISTSIZE=5000
+export HISTFILESIZE=20000
+export SAVEHIST=20000
+
+# Set PATH to include private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+	PATH="$HOME/bin:$PATH"
+fi
+
+# Set PATH to include current directory
+PATH=".:${PATH}"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
@@ -118,5 +159,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-if [ -e /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh ]; then . /home/luckierdodge/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
