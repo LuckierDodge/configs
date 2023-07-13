@@ -66,7 +66,7 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=false
 export ZSH_TMUX_DEFAULT_SESSION_NAME="Home"
 export STARSHIP_CONFIG=~/repos/config/starship.toml
-plugins=(git python vscode colored-man-pages command-not-found docker-compose docker pip ssh-agent sudo tmux starship)
+plugins=(git python vscode colored-man-pages command-not-found docker-compose docker pip ssh-agent sudo tmux starship fzf)
 
 
 source $ZSH/oh-my-zsh.sh
