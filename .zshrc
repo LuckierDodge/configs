@@ -58,7 +58,6 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 SOURCE_FILES=(
-	$ZSH/oh-my-zsh.sh
 	$HOME/.zsh_environment
 	/.container_environment
 	$HOME/.nix-profile/etc/profile.d/nix.sh
@@ -93,6 +92,8 @@ plugins=(
 	starship
 	fzf
 )
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
