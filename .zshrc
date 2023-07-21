@@ -58,10 +58,12 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 SOURCE_FILES=(
+	$HOME/.aliases
 	$HOME/.zsh_environment
 	/.container_environment
 	$HOME/.nix-profile/etc/profile.d/nix.sh
 	$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+	~/.zplug/init.zsh
 )
 
 for (( i = 1; i <= $#SOURCE_FILES; i++ )) do
@@ -92,8 +94,18 @@ plugins=(
 	starship
 	fzf
 )
+zplug "lukechilds/zsh-nvm"
+
+# Install zplug plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
 source $ZSH/oh-my-zsh.sh
+zplug load
 
 # User configuration
 

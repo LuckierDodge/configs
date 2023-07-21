@@ -69,7 +69,8 @@ alias rosdepinstall='rosdep install --from-paths src --ignore-src -r -y'
 
 
 # Mcity Aliases
-alias scheduling-build="src .env && docker compose -f docker-compose-dev.yml build"
-alias scheduling="docker compose -f docker-compose-dev.yml up"
+alias mcity-build="src .env && docker compose -f docker-compose-dev.yml build"
+alias mcity-run="docker compose -f docker-compose-dev.yml up"
 alias scheduling-web="docker exec -it scheduling_host /bin/bash -c 'source .env && npm run serve'"
+#alias keys-web="docker exec -it keys_host /binb/bash -c 'source .env && npm run serve'"
 
