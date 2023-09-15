@@ -1,6 +1,14 @@
 # Alias definitions
 # terminal ease of use
-alias rst="source ~/.bashrc"
+# alias rst="source ~/.bashrc"
+rst() {
+	if [[ "$SHELL" == *"zsh"* ]]; then
+		source ~/.zshrc
+	fi
+	if [[ "$SHELL" == *"bash"* ]]; then
+		source ~/.bashrc
+	fi
+}
 cdl() {
 	cd "$1"
 	ls
@@ -12,6 +20,23 @@ src() {
 }
 hist() {
 	history | grep "$@"
+}
+update() {
+	if type "apt" > /dev/null; then
+		sudo apt update -y && sudo apt upgrade -y && sudo apt auto-remove -y
+	fi
+	if type "nix-channel" > /dev/null; then
+		nix-channel --update
+	fi
+	if type "nixos-rebuild" > /dev/null; then
+		sudo nixos-rebuild switch
+	fi
+	if type "nix-env" > /dev/null; then
+		nix-env -u '*'
+	fi
+	if type "home-manager" > /dev/null; then
+		home-manager build && home-manager switch
+	fi
 }
 
 # dev server aliases
@@ -47,8 +72,8 @@ mux() {
 }
 
 # Updating and Upgrading
-alias update='sudo apt update -y && sudo apt upgrade -y'
-alias update-ding='sudo apt update -y && sudo apt upgrade -y && ding'
+#alias update='sudo apt update -y && sudo apt upgrade -y'
+#alias update-ding='sudo apt update -y && sudo apt upgrade -y && ding'
 alias updateprotonvpn='sudo pip3 install protonvpn-cli --upgrade'
 alias fixtime='sudo ntpdate time.windows.com'
 
