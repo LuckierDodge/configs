@@ -53,3 +53,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [safe]
 	directory = /home/luckierdodge/rtl8812au/
+[init]
+	defaultBranch = main

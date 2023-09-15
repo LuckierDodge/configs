@@ -25,6 +25,7 @@
     pkgs.vim
     pkgs.fzf
     pkgs.starship
+    pkgs.redis
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -68,6 +69,8 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  manual.manpages.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
