@@ -23,18 +23,23 @@ hist() {
 }
 update() {
 	if type "apt" > /dev/null; then
+		echo "Running apt"
 		sudo apt update -y && sudo apt upgrade -y && sudo apt auto-remove -y
 	fi
 	if type "nix-channel" > /dev/null; then
+		echo "Running nix channels"
 		nix-channel --update
 	fi
 	if type "nixos-rebuild" > /dev/null; then
+		echo "Running nixos-rebuild"
 		sudo nixos-rebuild switch
 	fi
 	if type "nix-env" > /dev/null; then
+		echo "Running nix-env"
 		nix-env -u '*'
 	fi
 	if type "home-manager" > /dev/null; then
+		echo "Running home-manager"
 		home-manager build && home-manager switch
 	fi
 }

@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    "${fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master"}/modules/vscode-server/home.nix"
+  ]
+
+  services.vscode-server.enable = true;
+
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "luckierdodge";
