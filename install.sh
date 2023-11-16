@@ -5,26 +5,27 @@ set -e
 dotfile_dir=~/repos/configs
 echo "Dotfiles path: $dotfile_dir"
 
-if [ ! -d ~/.conf_backup ]; then
+if [ ! -d ~/.backup_config ]; then
 	echo "Preparing dotfiles backup"
-	mkdir -p ~/.conf_backup
+	mkdir -p ~/.backup_config
 else
 	echo "Removing old dotfiles backup"
-	rm -rf ~/.conf_backup
-	mkdir -p ~/.conf_backup
+	rm -rf ~/.backup_config
+	mkdir -p ~/.backup_config
 fi
 
-[ ! -d $HOME/.oh-my-zsh ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+[ ! -d "$HOME/.oh-my-zsh" ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+[ ! -d "$HOME/.zplug" ] && curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 mkdir -p ~/.config/home-manager
+mkdir -p ~/.config/alacritty
 
-for file in .aliases .bashrc .dircolors .gitconfig .gitmessage .profile .tmux .tmux.conf .vim .vimrc .zshrc .config/home-manager/home.nix; do
+for file in .aliases .bashrc .dircolors .gitconfig .gitmessage .profile .tmux .tmux.conf .vim .vimrc .zshrc .config/home-manager/home.nix .config/alacritty/alacritty.yml; do
 	if [ -f ~/"$file" ]; then
 		if [[ -L ~/"$file" ]]; then
 			unlink ~/$file
 		else
-			cp ~/$file ~/.conf_backup/`basename $file`
+			cp ~/$file ~/.backup_config/`basename $file`
 			rm -f ~/$file
 		fi
 	fi
@@ -32,7 +33,7 @@ for file in .aliases .bashrc .dircolors .gitconfig .gitmessage .profile .tmux .t
 		if [[ -L ~/"$file" ]]; then
 			unlink ~/$file
 		else
-			cp -r ~/$file ~/.conf_backup/`basename $file`
+			cp -r ~/$file ~/.backup_config/`basename $file`
 			rm -rf ~/$file
 		fi
 	fi
@@ -76,3 +77,9 @@ tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "~/.tmux/plugins"
 tmux kill-session -t __noop >/dev/null 2>&1 || true
 
 printf "OK: Completed\n"
+
+if [ ! -e "$HOME/.config/alacritty/themes" ]; then
+	mkdir -p ~/.config/alacritty/themes
+	git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+fi
+
